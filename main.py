@@ -1,6 +1,9 @@
 from user_guess import user_guess
 from computer_guess import computer_guess
+from colorama import init, Fore # init inicializa la salida de colores en la consola y Fore se utiliza para cambiar el color del texto.
 import random
+
+init(autoreset=True)
 
 def main():
     aleatory_number = random.randint(1, 100)
@@ -13,7 +16,7 @@ def main():
     computer_attemps = 0
 
     while not guessed_user and not guessed_computer:
-        print(f"Round {round_number}") # Con la f indicas que se permite la interpolación de variables dentro del texto.
+        print(Fore.CYAN + f"Round {round_number}") # Con la f indicas que se permite la interpolación de variables dentro del texto.
 
         # User's turn 
         guessed_user = user_guess(aleatory_number, guessed_user)
@@ -24,6 +27,7 @@ def main():
         if not guessed_user:
            guess_computer = computer_guess(aleatory_number)
            computer_attemps += 1
+
            round_number += 1
           
 
